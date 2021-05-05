@@ -20,7 +20,11 @@ Contribute to making our goals happen
 ## What are the goals?
 
  ==> Create a bootable Fedora34 AACH64 server install on a phone
+ 
  ==> Add a KDE Plasma mobile desktop enviornment to the install
+ 
  ==> Bring Mycroft into the OS as an alternative to Siri, Alexa, Google, Bixpy or whatever the kids are using these days.
+ 
  ==> Create an installer
+ 
  ==> Start shiping by January 2022
