@@ -19,12 +19,12 @@ Contribute to making our goals happen
 
 ## What are the goals?
 
- ==> Create a bootable Fedora34 AACH64 server install on a phone
+ ==> [Create a bootable Fedora34 AACH64 server install on a phone](https://github.com/FedX-sudo/SpaceBus-OS/projects/1#card-60486916)
  
- ==> Add a KDE Plasma mobile desktop enviornment to the install
+ ==> [Add a KDE Plasma mobile desktop enviornment to the install](https://github.com/FedX-sudo/SpaceBus-OS/projects/1#card-60487114)
  
- ==> Bring Mycroft into the OS as an alternative to Siri, Alexa, Google, Bixpy or whatever the kids are using these days.
+ ==> [Bring Mycroft into the OS as a personal assistant](https://github.com/FedX-sudo/SpaceBus-OS/projects/1#card-60487438)
  
- ==> Create an installer
+ ==> [Create an installer](https://github.com/FedX-sudo/SpaceBus-OS/projects/1#card-60486916)
  
  ==> Start shiping by January 2022
