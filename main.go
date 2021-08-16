@@ -15,7 +15,7 @@ func isCommandAvailable(name string) bool {
 }
 
 func main() {
-    fmt.Println("Welcome to the SpaceBusOS installer!")
+    fmt.Println("Welcome to the SpaceBusOS installer! Currently this is NON FUNCTINAL!")
 
     //This is checking wheather the installer is running as root or not, it probably is fine, but best to play it safe.
 	if os.Geteuid() == 0{
