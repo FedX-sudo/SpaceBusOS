@@ -207,6 +207,8 @@ Error message and password prompt
 
 <li>Home</li>
 
+<li>Installing Alpine on Bedrock Linux</li>
+
 <li>New Tiddler</li>
 
 <li>TableOfContents</li>
@@ -10141,7 +10143,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210904233910984" list="$:/ControlPanel [[Getting Started]]" modified="20210904234117138" title="$:/StoryList">
+<div created="20210904233910984" list="[[Installing Alpine on Bedrock Linux]] $:/ControlPanel [[Getting Started]]" modified="20210904235011006" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210831141024372" modified="20210831141024372" title="$:/theme">
@@ -10317,6 +10319,33 @@ This is currently non functional and under heavy development.
 
 This is a science fair project and will be used to compete as such.
 ''</pre>
+</div>
+<div created="20210904234155774" modified="20210904235842651" tags="TableOfContents" title="Installing Alpine on Bedrock Linux">
+<pre>SpaceBusOS heavily relies on PostmakretOS and Alpine technologies. To add PostmarketOS/Alpine follow these instructions (at your judgment of course). 
+
+Make sure that all the packages currently installed are up to date by running pmm, the syntax of pmm is variable (IE on Arch it is `pmm -Syu` but on Ubuntu it is `pmm update`, so check what your syntax is by running `pmm -h`. This can be changed by editing `/bedrock/etc/bedrock.conf`. 
+
+# We will need to add Alpine Linux to Bedrock's catalog of distros. Run `sudo brl fetch alpine -m https://alpine.global.ssl.fastly.net/alpine/`.
+
+#Since PostmarketOS is based on Alpine Linux, we can point Alpine's APK package manager at PostmarketOS's mirrors. To do so, download this [ext[key | https://gitlab.com/postmarketOS/pmbootstrap/raw/master/pmb/data/keys/build.postmarketos.org.rsa.pub]]  to /bedrock/strata/alpine/etc/apk/mirrors. This can be done quickly with this command: 
+&lt;&lt;&lt;
+```
+sudo wget --output-document /bedrock/strata/alpine/etc/apk/keys/build.postmarketos.org.rsa.pub https://gitlab.com/postmarketOS/pmbootstrap/raw/master/pmb/data/keys/build.postmarketos.org.rsa.pub
+```
+&lt;&lt;&lt;
+
+# Now we can get PostmarketOS mirrors, we need to enable them. To do so, edit /bedrodck/strata/alpine/etc/apk/mirrors, it should look like this:
+&lt;&lt;&lt;
+```
+http://mirror.postmarketos.org/postmarketos/master
+http://dl-cdn.alpinelinux.org/alpine/edge/main
+http://dl-cdn.alpinelinux.org/alpine/edge/community
+http://dl-cdn.alpinelinux.org/alpine/edge/testing
+```
+&lt;&lt;&lt;
+Now we have APK on top of your default package manager, and APK has been pointed to postmarketOS's mirrors, along with Alpine's edge channel which is a rolling release version of Alpine.
+
+Update all your packages using Bedrock's pmm. </pre>
 </div>
 <div created="20210831140952619" modified="20210831140954171" tags="" title="New Tiddler">
 <pre></pre>
