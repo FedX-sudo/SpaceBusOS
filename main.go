@@ -15,6 +15,11 @@ func isCommandAvailable(name string) bool {
 }
 
 func main() {
+
+    var (
+        err error
+
+    )
     fmt.Println("Welcome to the SpaceBusOS installer! Currently this is NON FUNCTINAL!")
 
     //This is checking wheather the installer is running as root or not, it probably is fine, but best to play it safe.
@@ -32,7 +37,8 @@ func main() {
 
         if exec.Command("brl version").String() != "Bedrock Linux 0.7.22 Poki" {
             fmt.Println("Bedrock Linux is not up to date, updating.")
-            //out, err := exec.Command("ls").Output()
+            out, err := exec.Command("sudo brl update").Output()
+            fmt.Println(out)
         }
     }else {
         fmt.Println("Bedrock has not been installed, starting the install prossess")
