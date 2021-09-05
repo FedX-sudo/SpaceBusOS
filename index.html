@@ -10320,7 +10320,7 @@ This is currently non functional and under heavy development.
 This is a science fair project and will be used to compete as such.
 ''</pre>
 </div>
-<div created="20210904234155774" modified="20210904235842651" tags="TableOfContents" title="Installing Alpine on Bedrock Linux">
+<div created="20210904234155774" modified="20210905000002882" tags="TableOfContents" title="Installing Alpine on Bedrock Linux">
 <pre>SpaceBusOS heavily relies on PostmakretOS and Alpine technologies. To add PostmarketOS/Alpine follow these instructions (at your judgment of course). 
 
 Make sure that all the packages currently installed are up to date by running pmm, the syntax of pmm is variable (IE on Arch it is `pmm -Syu` but on Ubuntu it is `pmm update`, so check what your syntax is by running `pmm -h`. This can be changed by editing `/bedrock/etc/bedrock.conf`. 
@@ -10334,7 +10334,7 @@ sudo wget --output-document /bedrock/strata/alpine/etc/apk/keys/build.postmarket
 ```
 &lt;&lt;&lt;
 
-# Now we can get PostmarketOS mirrors, we need to enable them. To do so, edit /bedrodck/strata/alpine/etc/apk/mirrors, it should look like this:
+# Now we can get PostmarketOS mirrors, we need to enable them. To do so, edit `/bedrodck/strata/alpine/etc/apk/repositories`, it should look like this:
 &lt;&lt;&lt;
 ```
 http://mirror.postmarketos.org/postmarketos/master
