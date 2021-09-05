@@ -143,6 +143,8 @@ Error message and password prompt
 
 <li>$:/config/DownloadSaver/AutoSave</li>
 
+<li>$:/config/RelinkOnRename</li>
+
 <li>$:/core</li>
 
 <li>$:/DefaultTiddlers</li>
@@ -207,9 +209,9 @@ Error message and password prompt
 
 <li>Home</li>
 
-<li>Installing Alpine on Bedrock Linux</li>
-
 <li>New Tiddler</li>
+
+<li>Setting up PostmarketOS</li>
 
 <li>TableOfContents</li>
 
@@ -228,6 +230,9 @@ Error message and password prompt
 
 <div id="storeArea" style="display:none;">
 <div created="20210902120145168" modified="20210902120145168" title="$:/config/DownloadSaver/AutoSave">
+<pre>yes</pre>
+</div>
+<div created="20210905000056654" modified="20210905000056654" title="$:/config/RelinkOnRename">
 <pre>yes</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10143,7 +10148,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210904233910984" list="[[Installing Alpine on Bedrock Linux]] $:/ControlPanel [[Getting Started]]" modified="20210904235011006" title="$:/StoryList">
+<div created="20210904233910984" list="[[Setting up PostmarketOS]] $:/ControlPanel [[Getting Started]]" modified="20210904235011006" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210831141024372" modified="20210831141024372" title="$:/theme">
@@ -10320,7 +10325,10 @@ This is currently non functional and under heavy development.
 This is a science fair project and will be used to compete as such.
 ''</pre>
 </div>
-<div created="20210904234155774" modified="20210905000024424" tags="TableOfContents" title="Installing Alpine on Bedrock Linux">
+<div created="20210831140952619" modified="20210831140954171" tags="" title="New Tiddler">
+<pre></pre>
+</div>
+<div created="20210904234155774" modified="20210905000057955" tags="TableOfContents" title="Setting up PostmarketOS">
 <pre>SpaceBusOS heavily relies on PostmakretOS and Alpine technologies. To add PostmarketOS/Alpine follow these instructions (at your judgment of course). 
 
 Make sure that all the packages currently installed are up to date by running pmm, the syntax of pmm is variable (IE on Arch it is `pmm -Syu` but on Ubuntu it is `pmm update`, so check what your syntax is by running `pmm -h`. This can be changed by editing `/bedrock/etc/bedrock.conf`. 
@@ -10346,9 +10354,6 @@ http://dl-cdn.alpinelinux.org/alpine/edge/testing
 Now we have APK on top of your default package manager, and APK has been pointed to postmarketOS's mirrors, along with Alpine's edge channel which is a rolling release version of Alpine.
 
 Update all your packages using Bedrock's pmm. </pre>
-</div>
-<div created="20210831140952619" modified="20210831140954171" tags="" title="New Tiddler">
-<pre></pre>
 </div>
 <div caption="Contents" created="20210831141216888" list-after="$:/core/ui/SideBar/Open" modified="20210831141403386" tags="$:/tags/SideBar" title="TableOfContents">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
