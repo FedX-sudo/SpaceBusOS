@@ -20,6 +20,11 @@ elif [ $arch = "i386" ]; then
 elif [ $arch = "i486" ]; then
     dl_url=$(echo "https://github.com/bedrocklinux/bedrocklinux-userland/releases/download/0.7.23/bedrock-linux-0.7.23-i486.sh")
 
+else
+    echo "An error has occured, please install manualy.
+    See fedx-sudo.github.io/spacebusos_wiki for more details."
+    exit 1
+
 fi
 
 echo "Downolading the Bedrock Linux installer."
