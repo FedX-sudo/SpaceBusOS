@@ -1,1 +1,0 @@
-Path = ~/.config/kde.org/
