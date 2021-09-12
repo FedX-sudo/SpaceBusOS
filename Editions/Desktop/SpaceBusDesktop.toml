@@ -1,0 +1,28 @@
+title = "SpaceBusOS Desktop Edition Config File"
+
+[bedrock-config]
+
+enable = true
+
+path = ../config/bedrock.conf
+
+[packages]
+
+conflicts = ["KDE", "Plasma"]
+
+[required]
+	apk = [""]
+	nix = [""]
+	pacman = [""]
+
+[optional]
+	apk = []
+	nix = []
+	pacman = []
+
+[additinal-config]
+
+	[plasma]
+	file = "../config/plasmarc"
+
+	path = "~/.config/plasmarc"
