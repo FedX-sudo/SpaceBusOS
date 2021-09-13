@@ -4,16 +4,18 @@ title = "SpaceBusOS Desktop Edition Config File"
 
 enable = true
 
-path = ../config/bedrock.conf
+url = https://raw.githubusercontent.com/FedX-sudo/SpaceBusOS/main/Editions/Desktop/config/bedrock.conf
 
 [packages]
+
+enabled = true
 
 conflicts = ["KDE", "Plasma"]
 
 [required]
-	apk = [""]
-	nix = [""]
-	pacman = [""]
+	arch:pacman = ["plasma-meta"]
+	nix = []
+
 
 [optional]
 	apk = []
@@ -22,7 +24,15 @@ conflicts = ["KDE", "Plasma"]
 
 [additinal-config]
 
-	[plasma]
-	file = "../config/plasmarc"
+enabled = true
+
+[plasma]
+	url = "https://raw.githubusercontent.com/FedX-sudo/SpaceBusOS/main/Editions/Desktop/config/plasmarc"
 
 	path = "~/.config/plasmarc"
+
+[konsole]
+    url = "https://raw.githubusercontent.com/FedX-sudo/SpaceBusOS/main/Editions/Desktop/config/plasmarc"
+
+	path = "~/.config/plasmarc"
+

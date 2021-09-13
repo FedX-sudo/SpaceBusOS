@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
     "os/exec"
+    "flag"
+    "toml"
 )
 // this is a function to test weather a command exists or not.
 func isCommandAvailable(name string) bool {
@@ -15,7 +17,11 @@ func isCommandAvailable(name string) bool {
 }
 
 func main() {
-
+    var conf Config
+    if _, err := toml.Decode(tomlData, &conf); err != nil {
+    // handle error
+    }
+    fmt.Println(conf)
     var (
         err error
 
@@ -32,7 +38,6 @@ func main() {
     if isCommandAvailable("brl"){
         fmt.Println("Bedrock Linux is already installed.")
         // this is testing the version of Bedrock Linux.
-        // TODO: Makde that VVVVVVVVVVVVVVVV better, I will need to manualy update the version with every Bedrock update.
 
 
         if exec.Command("brl version").String() != "Bedrock Linux 0.7.22 Poki" {
