@@ -5,29 +5,41 @@ use run_script::ScriptOptions;
 
 
 fn main() {
+
+    // Defining the CLI framework. This incueds the subcommand install,
     let matches = App::new("SpaceBusOS installer")
                           .version("1.0")
                           .author("Fedx <fedx-sudo@pm.me>")
                           .about("The installer for the most portable and modular distor ever.")
 
                           .subcommand(SubCommand::with_name("install")
-                                      .about("installs a SpaceBusOS config.")
+                                      .about("Installs a SpaceBusOS config.")
+
+                                        .arg(Arg::with_name("edition")
+                                            .short("e")
+                                            .long("edition")
+                                            .help("Sets the version of SBOS to install.
+                                            Desktop - The official SBOS desktop eddition")
+                                            .takes_value(true))
+
                                         .arg(Arg::with_name("config")
                                             .short("c")
                                             .long("config")
                                             .value_name("FILE")
                                             .help("Sets a custom config file")
                                             .takes_value(true))
+
                                         .arg(Arg::with_name("no-config")
                                             .help("Does not overwrite existing config files")
-                                            .long("no-config")
-                                            .takes_value(true))
+                                            .long("no-config"))
+
                                         .arg(Arg::with_name("verbose")
-                                                .long("verbose")
+                                            .long("verbose")
                                             .short("v")
                                             .multiple(true)
                                             .help("Sets the level of verbosity"))
                                             )
+
 
 
                             .get_matches();
@@ -37,6 +49,18 @@ fn main() {
 
         let options = ScriptOptions::new();
         let args = vec![];
+        let mut config = "not-set";
+       if  matches.value_of("config").unwrap_or("not-found") != "not-found" {
+            config = matches.value_of("config").unwrap_or("error");
+       }
+        else if matches.value_of("edition").unwrap_or("not-found") != "not-found" {
+            config = matches.value_of("edition").unwrap_or("error");
+        }
+
+        else {
+            println! ("You must provide either an eddition or a config file.");
+            std::process::exit(1)
+        }
 
         let (code, output, error) = run_script::run(
             r#"
@@ -47,19 +71,27 @@ fn main() {
         )
         .unwrap();
 
-        if ( code != 0 ){
-            println! ("an unexpected error has occured.");
+        if  code != 0 {
+            println! ("An error has occured.");
             println! ("Error: {}", error);
+            std::process::exit(1);
         }
 
-        else if ( output.contains("Bedrock Linux 0.7.22 Poki" )){
+        else if  output.contains("Bedrock Linux 0.7.22 Poki" ){
             println! ("Bedrock Linux is installed and up to date");
+        }
+        else if  output.contains("Bedrock Linux"){
+            println! ("Bedrock Linux is installed, but not up to date. Please update Bedrock Linux to continue");
+            std::process::exit(1);
         }
 
         else {
-            println! ("an unexpected error has occured/");
+            println! ("an unexpected error has occured");
+            println! ("Error: {}", error);
+            std::process::exit(1);
 
         }
+
 
     }
 }
