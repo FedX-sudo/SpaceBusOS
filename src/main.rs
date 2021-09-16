@@ -3,6 +3,7 @@ extern crate clap;
 use clap::{Arg, App, SubCommand};
 use run_script::ScriptOptions;
 
+mod ui;
 
 fn main() {
 
