@@ -1,6 +1,6 @@
 // This is the official installer for SpaceBusOS.
 extern crate clap;
-use anyhow::{Context, Result};
+//use anyhow::{Context, Result};
 use clap::{App, Arg, SubCommand};
 
 mod command_check;
@@ -54,12 +54,21 @@ fn main() {
 
         if matches.value_of("config").unwrap_or("not-found") != "not-found" {
             config = matches.value_of("config").unwrap_or("error");
+            
         } else if matches.value_of("edition").unwrap_or("not-found") != "not-found" {
             config = matches.value_of("edition").unwrap_or("error");
         } else {
             println!("You must provide either an eddition or a config file.");
             std::process::exit(1)
         }
-        println!("{}", command_check::Check_BRL())
+        
+        let mut tmp = command_check::Check_BRL();
+        if tmp.contains("Bedrock Linux is installed and up to date"){
+			println!("{}", tmp)
+			
+			}
+		else {
+				Err(tmp);
+			}
     }
 }
