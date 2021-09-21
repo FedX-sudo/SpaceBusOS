@@ -62,13 +62,10 @@ fn main() {
             std::process::exit(1)
         }
         
-        let mut tmp = command_check::Check_BRL();
-        if tmp.contains("Bedrock Linux is installed and up to date"){
-			println!("{}", tmp)
+        //let mut tmp = command_check::Check_BRL();
+        if command_check::Check_BRL() {
+			println!("yay!")
 			
 			}
-		else {
-				Err(tmp);
-			}
-    }
+		}
 }
