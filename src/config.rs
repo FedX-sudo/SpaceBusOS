@@ -13,3 +13,8 @@ fn open (path) -> Result<Value, Error>{
 	let config: toml::Value = toml::from_str(&toml_string)?;
 	
 }*/
+
+
+pub fn run () {
+    println!("code goes here.")
+}
