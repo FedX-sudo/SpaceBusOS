@@ -35,4 +35,3 @@ enabled = true
     url = "https://raw.githubusercontent.com/FedX-sudo/SpaceBusOS/main/Editions/Desktop/config/plasmarc"
 
 	path = "~/.config/plasmarc"
-

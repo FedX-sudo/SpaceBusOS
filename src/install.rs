@@ -50,7 +50,7 @@ pub fn run () {
         println!("Bedrock Linux is installed and up to date.")
     }
 
-    else if output.contains("Bedrock Linux") {
+    else if output.contains("Bedrock Linux") { 
         println!("Bedrock Linux is installed, but needs to be updated");
         std::process::exit(1)
     }
