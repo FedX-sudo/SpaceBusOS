@@ -1,5 +1,8 @@
 # This is where the majority of the [SpaceBusOS] Nix configuration changes live. 
 
+{ config, pkgs, ... }:
+
+
 {   
 
 
@@ -18,7 +21,7 @@
      starship
    ];
 
-   networking.hostName = "SpaceBusOS"
+   networking.hostName = "SpaceBusOS";
    
    # Enable the X11 windowing system.
   services.xserver.enable = true;
