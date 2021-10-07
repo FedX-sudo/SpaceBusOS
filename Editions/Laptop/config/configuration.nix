@@ -12,6 +12,7 @@
       ./spacebusos-configuration.nix
     ];
    # Boot loader config
+   # MAKE SURE YOU SET A BOOTLOADER!!
    
    # Enable the next two settings if you wish to EFI boot
    # boot.loader.systemd-boot.enable = true; #enables the Systemd bootloader
