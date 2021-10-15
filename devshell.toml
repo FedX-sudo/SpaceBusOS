@@ -1,4 +1,0 @@
-[devshell]
-packages = [
-  "cargo"
-]
