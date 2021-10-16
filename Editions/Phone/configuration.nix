@@ -2,19 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
-
-let
-  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
-    export __NV_PRIME_RENDER_OFFLOAD=1 blender
-    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-    export __GLX_VENDOR_LIBRARY_NAME=nvidia
-    export __VK_LAYER_NV_optimus=NVIDIA_only
-    #export __NV_PRIME_RENDER_OFFLOAD=1 blender
-    exec -a "$0" "$@"
-  '';
-in
-
+{ config, pkgs, ... } 
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -30,7 +18,7 @@ in
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
-  time.timeZone = "America/Denver";
+  time.timeZone = "";
 
   #Kernel Config
   
@@ -98,10 +86,9 @@ in
 
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.fedx = {
+  users.users.user = {
       isNormalUser = true;
       shell = pkgs.fish;
-      home = "/home/fedx";
       extraGroups = ["wheel" "networkmanager"];
     };
 
@@ -112,17 +99,6 @@ in
   services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
 
   services.xmr-stak.cudaSupport = true;
-
-  hardware.nvidia.prime = {
-    offload.enable = true;
-
-    # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
-    intelBusId = "PCI:00:02:0";
-
-    # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
-    nvidiaBusId = "PCI:23:00:0";
-  };
-  
  
  # Enable the OpenSSH daemon.
    
@@ -168,4 +144,5 @@ in
   system.stateVersion = "21.05"; # Did you read the comment?
 
 }
+
 

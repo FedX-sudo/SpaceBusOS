@@ -1,11 +1,11 @@
 {pkgs, ...}: 
 let
   # Personal Info
-  name = "fedx";
-  email = "fedx-sudo@pm.me";
-  githubUsername = "fedx-sudo";
+  name = "name";
+  email = "email@email.email";
+  githubUsername = "user";
   # Paths
-  home = "/home/fedx";
+  home = "/home/$name";
   dots = "${home}/Dotfiles/dots";
   scripts = "/home/jon/Dotfiles/scripts";
   maildir = "/home/jon/Mail";
@@ -20,30 +20,49 @@ in
   programs = {
     git = {
     enable = true;
-    userName = "fedx-sudo";
-    userEmail = "fedx-sudo@pm.me";
     lfs.enable = true;
-    };
+  };
+    fish = {
+      enable = true;
+        shellAbbrs = {
+         # Git abbreviations
+         
+       };
+       interactiveShellInit = 
+          ''
+          starship init fish | source
+
+          alias ll="exa -l --icons"
+          
+          alias ls="exa --icons"
+
+          shinit "command_not_found_handler"
+
+          neofetch
+          
+
+          '';
+        };
+    command-not-found.enable = true;
   };
   accounts.email = {
     maildirBasePath = "${maildir}";
     accounts = {
       proton = {
-        address = "fenixguthrie@protonmail.com";
-        userName = "fenixguthrie@protonmail.com";
+        address = "email@email.email";
+        userName = "email@email.email";
         flavor = "plain";
         primary = true;
 
         mbsync = {
           enable = true;
           expunge = "both";
-          patterns = [ "*" "![Gmail]*" "[Gmail]/Sent Mail" ];
         };
-        realName = "Fenix Guthrie";
+        realName = "Real Name";
       };
       gmail = {
-        address = "2057018@jefffcoschools.us";
-        userName = "2057018@jeffcoschools.us";
+        address = "email@gmail.com";
+        userName = "email@gmail.com";
         flavor = "gmail.com";
         passwordCommand = "${pkgs.pass}/bin/pass gmail";
         primary = false;
@@ -52,7 +71,7 @@ in
           expunge = "both";
           patterns = [ "*" "![Gmail]*" "[Gmail]/Sent Mail" ];
         };
-        realName = "Fenix Guthrie";
+        realName = "Real Name";
       };
     }; 
   };  
@@ -60,7 +79,7 @@ in
     packages = [
       pkgs.fd
       pkgs.ncurses
-      pkgs.pacman
+      
     ];
     file = {
       ".config/cron".text = 
@@ -70,7 +89,7 @@ in
     };  
     activation = {
      myActivationAction = ''
-       $DRY_RUN_CMD crontab /home/fedx.config/cron
+       $DRY_RUN_CMD crontab ${home}/.config/cron
        '';
     };
   };
