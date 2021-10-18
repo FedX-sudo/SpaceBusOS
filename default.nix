@@ -10,8 +10,9 @@ stdenv.mkDerivation {
   src = /home/fedx/Code/SpaceBusOS;
   installPhase = ''
     mkdir -p $out/bin
-    cp install.sh $out/bin
-    cp laptop-install.sh $out/bin
+    cp install.sh $out/bin/SBOS-install
+    cp laptop-install-root.sh $out/bin/
+    chmod +x $out/bin/SBOS-install
     
   '';
 }

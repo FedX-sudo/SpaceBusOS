@@ -7,10 +7,12 @@ echo "Laptop (1)"
 
 
 read -p "Please select which version you would like (1). " eddition
+
 echo "$eddition"
 if [ "$eddition" == "1" ]; then
     echo "Proceeeding with install"
     
-    ./laptop-install.sh
+    sudo bash $(pwd)/laptop-install-root.sh
 fi
+
 echo "Error, no eddition specified. Abborting." 
