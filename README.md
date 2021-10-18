@@ -14,7 +14,6 @@ A Linux distro using NixOS technologies targeted at being an amazing development
 - [ ] Amazing development tools installed by default like QuickEmu, and Devshells. 
 - [ ] A pre configured Plasma Desktop (laptop and desktop editions) with a tiling window manager extension. 
 - [ ] A pre configured Plasma Mobile Desktop (tablet and phone editions) with optimisations for coding awesome things, on the go. 
-- [ ] Home manager integrations with CRON. 
 - [ ] Custom tools which integrate with services such as Home manager, and nixpkgs
 - [ ] Pre configured applications such as Brave, Starship, and Git. 
 
