@@ -5,15 +5,24 @@ with import <nixpkgs> {};
 stdenv.mkDerivation {
   name = "SBOS-install";
   buildInputs = [
-    
+    bash
   ];
   src = /home/fedx/Code/SpaceBusOS;
+  buildPhase = ''
+            cp install.sh install.sh.bak
+            echo "#!/bin/bash" > install.sh
+            echo "out_path='$out'" >> install.sh
+
+            cat install.sh.bak | sed 1d >> install.sh
+        '';
   installPhase = ''
     mkdir -p $out/bin
+
     cp install.sh $out/bin/SBOS-install
+    
     cp laptop-install-root.sh $out/bin/
     chmod +x $out/bin/SBOS-install
+
     
   '';
 }
-

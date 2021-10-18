@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/bin/bash
 
 echo "This is the Alpha of the SpaceBusOS installer. Proeceed with caution."
 
@@ -12,7 +12,7 @@ echo "$eddition"
 if [ "$eddition" == "1" ]; then
     echo "Proceeeding with install"
     
-    sudo bash $(pwd)/laptop-install-root.sh
+    sudo bash $out_path/bin/laptop-install-root.sh
 fi
 
 echo "Error, no eddition specified. Abborting." 
