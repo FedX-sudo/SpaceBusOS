@@ -1,0 +1,135 @@
+#!/bin/bash
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||////|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||/////||
+# ||/|||||||||/////|||||||||||||||||||||||||||||||||||||||||||||///////|||||||||||||||||||||||||//////||||//////||||||||//||
+# ||/|||||||//|||||||||//////|||||/////|||||||////||||||////||||//||||//|||/||||||||||/////||||//||||//||//|||||||||||||//||
+# ||/||||||||/////|||||//||||/|||||||||//|||//||||||||//||||/|||///////||||/||||//|||//||||||||/|||||//|||///////|||||||//||
+# ||/|||||||||||||//|||//||||//|||///////||//||||||||////////|||//||||//|||/||||//||||/////||||/|||||//||||||||//|||||||//||
+# ||/|||||||||||||//|||//||||/|||//||||//|||//||||||||/|||||||||//||||//|||/||||//||||||||//|||//||||/|||||||||//|||||||//||
+# ||/||||||||//////||||//////|||||////||/|||||////||||||/////|||//////||||||///||/|||//////||||||////|||||//////||||||||//||
+# ||////|||||||||||||||//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||/////||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+clear
+reset=`tput sgr0`
+black=`tput setaf 0`
+red=`tput setaf 1`
+green=`tput setaf 2`
+orange=`tput setaf 3`
+blue=`tput setaf 4 `
+purple=`tput setaf 5`
+teal=`tput setaf 6`
+white=`tput setaf 7`
+altBlack=`tput setaf 8`
+altRed=`tput setaf 9`
+altGreen=`tput setaf 10`
+altOrange=`tput setaf 11`
+altBlue=`tput setaf 12`
+altPurple=`tput setaf 13`
+altTeal=`tput setaf 14`
+altWhite=`tput setaf 15`
+eddition=""
+echo "
+${altBlack}|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+||${orange}/////${altBlack}|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||${orange}/////${altBlack}||
+||${orange}//${altBlack}|||||||||${orange}/////${altBlack}|||||||||||||||||||||||||||||||||||||||||||||${orange}///////${altBlack}|||||||||||||||||||||||||${orange}//////${altBlack}||||${orange}//////${altBlack}||||||||${orange}//${altBlack}||
+||${orange}//${altBlack}|||||||${orange}//${altBlack}|||||||||${orange}//////${altBlack}|||||${orange}/////${altBlack}|||||||${orange}////${altBlack}||||||${orange}////${altBlack}||||${orange}//${altBlack}||||${orange}//${altBlack}|||${orange}/${altBlack}||||||||||${orange}/////${altBlack}||||${orange}//${altBlack}||||${orange}//${altBlack}||${orange}//${altBlack}|||||||||||||${orange}//${altBlack}||
+||${orange}//${altBlack}||||||||${orange}/////${altBlack}|||||${orange}//${altBlack}||||${orange}/${altBlack}|||||||||${orange}//${altBlack}|||${orange}//${altBlack}||||||||${orange}//${altBlack}||||${orange}/${altBlack}|||${orange}///////${altBlack}||||${orange}/${altBlack}||||${orange}//${altBlack}|||${orange}//${altBlack}||||||||${orange}/${altBlack}|||||${orange}//${altBlack}|||${orange}///////${altBlack}|||||||${orange}//${altBlack}||
+||${orange}//${altBlack}|||||||||||||${orange}//${altBlack}|||${orange}//${altBlack}||||${orange}//${altBlack}|||${orange}///////${altBlack}||${orange}//${altBlack}||||||||${orange}////////${altBlack}|||${orange}//${altBlack}||||${orange}//${altBlack}|||${orange}/${altBlack}||||${orange}//${altBlack}||||${orange}/////${altBlack}||||${orange}/${altBlack}|||||${orange}//${altBlack}||||||||${orange}//${altBlack}|||||||${orange}//${altBlack}||
+||${orange}//${altBlack}|||||||||||||${orange}//${altBlack}|||${orange}//${altBlack}||||${orange}/${altBlack}|||${orange}//${altBlack}||||${orange}//${altBlack}|||${orange}//${altBlack}||||||||${orange}/${altBlack}|||||||||${orange}//${altBlack}||||${orange}//${altBlack}|||${orange}/${altBlack}||||${orange}//${altBlack}||||||||${orange}//${altBlack}|||${orange}//${altBlack}||||${orange}/${altBlack}|||||||||${orange}//${altBlack}|||||||${orange}//${altBlack}||
+||${orange}//${altBlack}||||||||${orange}//////${altBlack}||||${orange}//////${altBlack}|||||${orange}/////${altBlack}|${orange}/${altBlack}|||||${orange}////${altBlack}||||||${orange}/////${altBlack}|||${orange}//////${altBlack}||||||${orange}////${altBlack}|${orange}/${altBlack}|||${orange}//////${altBlack}||||||${orange}/////${altBlack}||||${orange}//////${altBlack}||||||||${orange}//${altBlack}||
+||${orange}/////${altBlack}|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||${orange}/////${altBlack}||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||${reset}
+"
+ask_eddition(){
+while :; do 
+    echo "${green}1)${reset} Laptop"
+    echo "${green}2)${reset} Desktop"
+    echo "${green}3)${reset} tablet"
+    echo "${green}4)${reset} phone"
+    read -p "Please select the eddition you wish to use (1-4). " eddition
+    case $eddition in 
+         1)
+             eddition="laptop"
+             break
+             ;;
+          2) 
+              eddition="desktop"
+              break
+              ;;
+          3) 
+              eddition="tablet" 
+              break
+              ;;
+          4) 
+              eddition="phone" 
+              break
+              ;;
+          *)
+              echo "Error, please select 1-4."
+              ;;
+    esac
+done
+
+}
+
+root="/"
+
+echo "${red} This the Alpha of the SpaceBusOS installer. Proeceed with caution.${reset}"
+
+if [[ -e "/sys/class/power_supply/BAT0/" ]]; then 
+    eddition="laptop"
+else 
+    ask_eddition
+fi
+
+read -p "Using ${purple}${eddition}${reset} for the install process, would you like to change this (y/N)? " askvar
+
+case $askvar in 
+    y|Y|Yes|YES)
+        ask_eddition
+    ;;
+    *)
+        clear
+        echo "Proceeding with install..."
+
+    ;;
+
+esac
+
+read -p "Would you like to use SpaceBus automatic partitioning (Y/n)? " askvar
+case $askvar in   
+    N|n|no|No|NO)
+        echo "Manual partitioning selected."
+        echo "Warning, auto-generated mount options may not work properly with manual partitioning"
+        echo "${red}------------------------------------------------------------------------------------${reset}"
+        echo "Pleas do the following: "
+        echo "  ${green}1.${reset} Format your disk(s) as you wish to."
+        echo "  ${green}2.${reset} Mount your root partition in /mnt/."
+        echo "  ${green}3.${reset} Make a /mnt/boot partition."
+        echo "  ${green}4.${reset} Mount your boot partition in /mnt/boot."
+        echo "For more information see the NixOS guid on installing for more details:"
+        echo "${altBlack}https://nixos.org/manual/nixos/unstable/index.html#sec-installation${reset}"
+        while :; do 
+            read -p "Press enter to continue. "
+            if cat /proc/mounts | grep "/mnt" && cat /proc/mounts | grep "/mnt/boot"; then
+                clear
+                echo "Proceeding with the install."
+                break
+            else 
+                echo "The partitions have not been mounted, please mount them."
+            fi
+        done
+            
+        ;;
+    *)
+        echo "Automatic partitioniing sleected. Proeceed with caution."
+        echo "${red}------------------------------------------------------------------------------------${reset}"
+
+    ;;
+
+esac
+

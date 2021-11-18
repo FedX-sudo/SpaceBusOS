@@ -1,0 +1,51 @@
+#!/bin/bash
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||/////||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||/////||
+# ||//||||||||/////|||||||||||||||||||||||||||||||||||||||||||||///////|||||||||||||||||||||||||//////||||//////||||||||//||
+# ||//||||||//|||||||||//////|||||/////|||||||////||||||////||||//||||//|||/||||//||||/////||||//||||//||//|||||||||||||//||
+# ||//|||||||/////|||||//||||/|||||||||//|||//||||||||//||||/|||///////||||/||||//|||//||||||||/|||||//|||//////||||||||//||
+# ||//||||||||||||//|||//||||//|||///////||//||||||||////////|||//||||//|||/||||//||||/////||||/|||||//||||||||//|||||||//||
+# ||//||||||||||||//|||//||||/|||//||||//|||//||||||||/|||||||||//||||//|||/||||//||||||||//|||//||||/|||||||||//|||||||//||
+# ||//|||||||//////||||//////|||||////||/|||||////||||||/////|||//////||||||///||/|||//////||||||////|||||//////||||||||//||
+# ||/////||||||||||||||//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||/////||
+# |||||||||||||||||||||//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+reset=`tput sgr0`
+black=`tput setaf 0`
+red=`tput setaf 1`
+green=`tput setaf 2`
+orange=`tput setaf 3`
+blue=`tput setaf 4 `
+purple=`tput setaf 5`
+teal=`tput setaf 6`
+white=`tput setaf 7`
+altBlack=`tput setaf 8`
+altRed=`tput setaf 9`
+altGreen=`tput setaf 10`
+altOrange=`tput setaf 11`
+altBlue=`tput setaf 12`
+altPurple=`tput setaf 13`
+altTeal=`tput setaf 14`
+altWhite=`tput setaf 15`
+eddition=""
+echo "
+${altBlack}|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+||${orange}/////${altBlack}|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||${orange}/////${altBlack}||
+||${orange}//${altBlack}|||||||||${orange}/////${altBlack}|||||||||||||||||||||||||||||||||||||||||||||${orange}///////${altBlack}|||||||||||||||||||||||||${orange}//////${altBlack}||||${orange}//////${altBlack}||||||||${orange}//${altBlack}||
+||${orange}//${altBlack}|||||||${orange}//${altBlack}|||||||||${orange}//////${altBlack}|||||${orange}//////${altBlack}||||||${orange}////${altBlack}||||||${orange}////${altBlack}||||${orange}//${altBlack}||||${orange}//${altBlack}|||${orange}/${altBlack}||||||||||${orange}/////${altBlack}||||${orange}//${altBlack}||||${orange}//${altBlack}||${orange}//${altBlack}|||||||||||||${orange}//${altBlack}||
+||${orange}//${altBlack}||||||||${orange}/////${altBlack}|||||${orange}//${altBlack}||||${orange}/${altBlack}|||||||||${orange}//${altBlack}|||${orange}//${altBlack}||||||||${orange}//${altBlack}||||${orange}/${altBlack}|||${orange}///////${altBlack}||||${orange}/${altBlack}||||${orange}//${altBlack}|||${orange}//${altBlack}||||||||${orange}/${altBlack}|||||${orange}//${altBlack}|||${orange}///////${altBlack}|||||||${orange}//${altBlack}||
+||${orange}//${altBlack}|||||||||||||${orange}//${altBlack}|||${orange}//${altBlack}||||${orange}//${altBlack}|||${orange}///////${altBlack}||${orange}//${altBlack}||||||||${orange}////////${altBlack}|||${orange}//${altBlack}||||${orange}//${altBlack}|||${orange}/${altBlack}||||${orange}//${altBlack}||||${orange}/////${altBlack}||||${orange}/${altBlack}|||||${orange}//${altBlack}||||||||${orange}//${altBlack}|||||||${orange}//${altBlack}||
+||${orange}//${altBlack}|||||||||||||${orange}//${altBlack}|||${orange}//${altBlack}||||${orange}/${altBlack}|||${orange}//${altBlack}||||${orange}//${altBlack}|||${orange}//${altBlack}||||||||${orange}/${altBlack}|||||||||${orange}//${altBlack}||||${orange}//${altBlack}|||${orange}/${altBlack}||||${orange}//${altBlack}||||||||${orange}//${altBlack}|||${orange}//${altBlack}||||${orange}/${altBlack}|||||||||${orange}//${altBlack}|||||||${orange}//${altBlack}||
+||${orange}//${altBlack}||||||||${orange}//////${altBlack}||||${orange}//////${altBlack}|||||${orange}/////${altBlack}|${orange}/${altBlack}|||||${orange}////${altBlack}||||||${orange}/////${altBlack}|||${orange}//////${altBlack}||||||${orange}////${altBlack}|${orange}/${altBlack}|||${orange}//////${altBlack}||||||${orange}/////${altBlack}||||${orange}//////${altBlack}||||||||${orange}//${altBlack}||
+||${orange}/////${altBlack}|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||${orange}/////${altBlack}||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||${reset}
+"
+curlie -fsSL "https://wttr.in/?0"
+echo "${altOrange}Public IP: ${reset}"
+curlie -fsSL "https://ifconfig.me"
+echo ""
+echo  "${altOrange}CPU:${reset}"
+lscpu |rg "Model name:" | cut -c 34-10000
+echo  "${altOrange}Fish Says Hi:${reset}"
