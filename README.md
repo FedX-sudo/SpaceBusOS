@@ -1,6 +1,6 @@
 # SpaceBusOS
-
-A Linux distro using NixOS technologies targeted at being an amazing development experiance for phones, tablets, laptops, and desktops alike. 
+# NEW [LOCATION](https://gitlab.com/fedx-sudo/SpaceBusOS)
+A NixOS respin targeted at being an amazing development experiance for phones, tablets, laptops, and desktops alike. 
 
 ## Status: Bassicaly just an idea
 
