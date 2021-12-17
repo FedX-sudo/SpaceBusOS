@@ -1,5 +1,4 @@
 #!/bin/bash
-clear
 eddition=""
 DE="none"
 gpu="none"
@@ -26,7 +25,43 @@ dullPurple=`tput setaf 13`
 dullTeal=`tput setaf 14`
 dullWhite=`tput setaf 15`
 
+clear
 echo "$red This is the Alpha of the SpaceBusOS installer. Proeceed with caution. $reset"
+
+usage()
+{
+cat << EOF
+usage: bash ./scripts/packndeploy -n service_name
+-n    | --service_name      (Required)            Service to deploy
+-b    | --branch            (master)              Source branch
+-h    | --help                                    Brings up this menu
+EOF
+}
+listDEs()
+{ 
+cat << EOF
+Available desktops to install:
+* Plasma Desktop
+* Plasma Mobile
+* SwayWM
+* i3wm
+* xfce
+EOF
+}
+while [ "$1" != "" ]; do
+    case $1 in
+        -l | --list-DEs ) listDEs
+            exit
+        ;;            
+        -h | --help )    usage
+            exit
+        ;;
+        * )              usage
+            exit 1
+    esac
+    shift
+done
+
 
 echo "Available edditions:"
 echo "Laptop"
