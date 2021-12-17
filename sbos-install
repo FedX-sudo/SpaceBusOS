@@ -1,17 +1,13 @@
 #!/bin/bash
-# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-# ||////|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||/////||
-# ||/|||||||||/////|||||||||||||||||||||||||||||||||||||||||||||///////|||||||||||||||||||||||||//////||||//////||||||||//||
-# ||/|||||||//|||||||||//////|||||/////|||||||////||||||////||||//||||//|||/||||||||||/////||||//||||//||//|||||||||||||//||
-# ||/||||||||/////|||||//||||/|||||||||//|||//||||||||//||||/|||///////||||/||||//|||//||||||||/|||||//|||///////|||||||//||
-# ||/|||||||||||||//|||//||||//|||///////||//||||||||////////|||//||||//|||/||||//||||/////||||/|||||//||||||||//|||||||//||
-# ||/|||||||||||||//|||//||||/|||//||||//|||//||||||||/|||||||||//||||//|||/||||//||||||||//|||//||||/|||||||||//|||||||//||
-# ||/||||||||//////||||//////|||||////||/|||||////||||||/////|||//////||||||///||/|||//////||||||////|||||//////||||||||//||
-# ||////|||||||||||||||//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||/////||
-# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 clear
+eddition=""
+DE="none"
+gpu="none"
+root="."
+timezone="America/Denver"
+username="astronoght" 
+shell="fish"
+
 reset=`tput sgr0`
 black=`tput setaf 0`
 red=`tput setaf 1`
@@ -21,115 +17,327 @@ blue=`tput setaf 4 `
 purple=`tput setaf 5`
 teal=`tput setaf 6`
 white=`tput setaf 7`
-altBlack=`tput setaf 8`
-altRed=`tput setaf 9`
-altGreen=`tput setaf 10`
-altOrange=`tput setaf 11`
-altBlue=`tput setaf 12`
-altPurple=`tput setaf 13`
-altTeal=`tput setaf 14`
-altWhite=`tput setaf 15`
-eddition=""
-echo "
-${altBlack}|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-||${orange}/////${altBlack}|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||${orange}/////${altBlack}||
-||${orange}//${altBlack}|||||||||${orange}/////${altBlack}|||||||||||||||||||||||||||||||||||||||||||||${orange}///////${altBlack}|||||||||||||||||||||||||${orange}//////${altBlack}||||${orange}//////${altBlack}||||||||${orange}//${altBlack}||
-||${orange}//${altBlack}|||||||${orange}//${altBlack}|||||||||${orange}//////${altBlack}|||||${orange}/////${altBlack}|||||||${orange}////${altBlack}||||||${orange}////${altBlack}||||${orange}//${altBlack}||||${orange}//${altBlack}|||${orange}/${altBlack}||||||||||${orange}/////${altBlack}||||${orange}//${altBlack}||||${orange}//${altBlack}||${orange}//${altBlack}|||||||||||||${orange}//${altBlack}||
-||${orange}//${altBlack}||||||||${orange}/////${altBlack}|||||${orange}//${altBlack}||||${orange}/${altBlack}|||||||||${orange}//${altBlack}|||${orange}//${altBlack}||||||||${orange}//${altBlack}||||${orange}/${altBlack}|||${orange}///////${altBlack}||||${orange}/${altBlack}||||${orange}//${altBlack}|||${orange}//${altBlack}||||||||${orange}/${altBlack}|||||${orange}//${altBlack}|||${orange}///////${altBlack}|||||||${orange}//${altBlack}||
-||${orange}//${altBlack}|||||||||||||${orange}//${altBlack}|||${orange}//${altBlack}||||${orange}//${altBlack}|||${orange}///////${altBlack}||${orange}//${altBlack}||||||||${orange}////////${altBlack}|||${orange}//${altBlack}||||${orange}//${altBlack}|||${orange}/${altBlack}||||${orange}//${altBlack}||||${orange}/////${altBlack}||||${orange}/${altBlack}|||||${orange}//${altBlack}||||||||${orange}//${altBlack}|||||||${orange}//${altBlack}||
-||${orange}//${altBlack}|||||||||||||${orange}//${altBlack}|||${orange}//${altBlack}||||${orange}/${altBlack}|||${orange}//${altBlack}||||${orange}//${altBlack}|||${orange}//${altBlack}||||||||${orange}/${altBlack}|||||||||${orange}//${altBlack}||||${orange}//${altBlack}|||${orange}/${altBlack}||||${orange}//${altBlack}||||||||${orange}//${altBlack}|||${orange}//${altBlack}||||${orange}/${altBlack}|||||||||${orange}//${altBlack}|||||||${orange}//${altBlack}||
-||${orange}//${altBlack}||||||||${orange}//////${altBlack}||||${orange}//////${altBlack}|||||${orange}/////${altBlack}|${orange}/${altBlack}|||||${orange}////${altBlack}||||||${orange}/////${altBlack}|||${orange}//////${altBlack}||||||${orange}////${altBlack}|${orange}/${altBlack}|||${orange}//////${altBlack}||||||${orange}/////${altBlack}||||${orange}//////${altBlack}||||||||${orange}//${altBlack}||
-||${orange}/////${altBlack}|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||${orange}/////${altBlack}||
-|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||${reset}
-"
-ask_eddition(){
-while :; do 
-    echo "${green}1)${reset} Laptop"
-    echo "${green}2)${reset} Desktop"
-    echo "${green}3)${reset} tablet"
-    echo "${green}4)${reset} phone"
-    read -p "Please select the eddition you wish to use (1-4). " eddition
-    case $eddition in 
-         1)
-             eddition="laptop"
-             break
-             ;;
-          2) 
-              eddition="desktop"
-              break
-              ;;
-          3) 
-              eddition="tablet" 
-              break
-              ;;
-          4) 
-              eddition="phone" 
-              break
-              ;;
-          *)
-              echo "Error, please select 1-4."
-              ;;
-    esac
-done
+dullBlack=`tput setaf 8`
+dullRed=`tput setaf 9`
+dullGreen=`tput setaf 10`
+dullOrange=`tput setaf 11`
+dullBlue=`tput setaf 12`
+dullPurple=`tput setaf 13`
+dullTeal=`tput setaf 14`
+dullWhite=`tput setaf 15`
 
-}
+echo "$red This is the Alpha of the SpaceBusOS installer. Proeceed with caution. $reset"
 
-root="/"
+echo "Available edditions:"
+echo "Laptop"
+echo "Desktop"
+echo "tablet"
+echo "phone"
+echo "none"
+read -p "Please select an eddition to use (${eddition}). " eddition
+          
+#read -p "Would you like to use SpaceBus automatic partitioning (Y/n)? " askvar
+#case $askvar in   
+#    N|n|no|No|NO)
+#        echo "Manual partitioning selected."
+#        echo "Warning, auto-generated mount options may not work properly with manual partitioning"
+#        echo "------------------------------------------------------------------------------------"
+#        echo "Pleas do the following: "
+#        echo "  1. Format your disk(s) as you wish to." 
+#        echo "  2. Mount your root partition in /mnt/."
+#        echo "  3. Make a /mnt/boot partition."
+#        echo "  4. Mount your boot partition in /mnt/boot."
+#        echo "For more information see the NixOS guid on installing for more details:"
+#        echo "https://nixos.org/manual/nixos/stable/index.html#sec-installation"
+#        while :; do 
+#            read -p "Press enter to continue. "
+#            if cat /proc/mounts | grep "/mnt" && cat /proc/mounts | grep "/mnt/boot"; then
+#                echo "Proceeding with the install."
+#                break
+#            else 
+#                echo "The partitions have not been mounted, please mount them."
+#            fi
+#        done
+#            
+#        ;;
+#    *)
+#        echo "$red sorry, automatic partitioning is currently unavailable. $reset"
+#    ;;
+#
+#esac
 
-echo "${red} This the Alpha of the SpaceBusOS installer. Proeceed with caution.${reset}"
+case $eddition in
+	"laptop"|"Laptop"|laptop)
+		eddition="laptop"
+         	echo "-------------------------------------------------------------------------------------"
+	        echo "Please select which DE you would like to use. "
+	        echo "Available DEs (for a full list run sbos-install --list (unavailable): " #TODO add that.
+         	echo "-------------------------------------------------------------------------------------"
+	        echo "Plasma Desktop"
+	        echo "Sway WM (does not work with Nvidia cards)"
+        	echo "i3wm"
+		;;
+	desktop|Desktop)
+		eddition="desktop"
+	        echo "-------------------------------------------------------------------------------------"
+        	echo "Please select which DE you would like to use. "
+	        echo "Available DEs (for a full list run sbos-install --list (unavailable): " #TODO add that.
+        	echo "-------------------------------------------------------------------------------------"
+	        echo "Plasma Desktop"
+        	echo "Sway WM (does not work with Nvidia cards)"
+	        echo "i3wm"
+		;;
+	tablet|Tablet)
+		eddition="tablet"
+		echo "-------------------------------------------------------------------------------------"
+                echo "Please select which DE you would like to use. "
+                echo "Available DEs (for a full list run sbos-install --list (unavailable): " #TODO add that.
+                echo "-------------------------------------------------------------------------------------"
+                echo "Plasma Desktop"
+		echo "Plasma Mobile"
+                echo "Sway WM (does not work with Nvidia cards)"
+                echo "i3wm"
+		;;
+	phone|Phone)
+		eddition="phone"
+		echo "-------------------------------------------------------------------------------------"
+                echo "Please select which DE you would like to use. "
+                echo "Available DEs (for a full list run sbos-install --list (unavailable): " #TODO add that.
+                echo "-------------------------------------------------------------------------------------"
+                echo "Plasma Mobile"
+                echo "Sway WM (does not work with Nvidia cards)"
+                echo "i3wm"
+		;;
+        *)
+		eddition="none"
+		echo "$red Error: unrecognized eddition selected, assuming none $reset"
+		;;
+esac
+read -p "DE to be used (none) " DE
 
-if [[ -e "/sys/class/power_supply/BAT0/" ]]; then 
-    eddition="laptop"
-else 
-    ask_eddition
+if neofetch | rg "NVIDIA" ; then 
+	echo "Auto detected $green Nvidia $reset GPU."
+	read -p "Would you like to use proprietary Nvidia drivers (Y/n)?" askvar
+	case $askvar in 
+		n|N|No|NO|NO!|no!|no.)
+			echo"not using proprietary Nvidia drivers."
+			;;
+		*) 
+			echo "using proprietary Nvidia drivers." 
+			gpu="nvidia"
+			;;
+	esac
+fi
+#clear
+echo "-------------------------------------------------------------------------------"
+echo "generating config... Please wait."
+echo "-------------------------------------------------------------------------------"
+
+echo "# Edit this configuration file to define what should be installed on" > ${root}/configuration.nix
+echo "# your system.  Help is available in the configuration.nix(5) man page" >> ${root}/configuration.nix
+echo "# and in the NixOS manual (accessible by running ‘nixos-help’)." >> ${root}/configuration.nix
+
+echo "{ config, pkgs, ... }:" >> ${root}/configuration.nix
+
+if [[ $gpu == "nvidia" ]]; then 
+	echo "let #NOSYNC" >> ${root}/configuration.nix
+	echo '  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload"  #NOSYNC' >> ${root}/configuration.nix
+	echo "    export __NV_PRIME_RENDER_OFFLOAD=1 #NOSYNC" >> ${root}/configuration.nix
+	echo "    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0 #NOSYNC" >> ${root}/configuration.nix
+	echo "    export __GLX_VENDOR_LIBRARY_NAME=nvidia #NOSYNC " >> ${root}/configuration.nix
+        echo "    export __VK_LAYER_NV_optimus=NVIDIA_only #NOSYNC" >> ${root}/configuration.nix
+	echo '    exec -a "$0" "$@" #NOSYNC"' >> ${root}/configuration.nix
+  	echo "  ''; #NOSYNC " >> ${root}/configuration.nix
+	echo "in #NOSYNC" >> ${root}/configuration.nix
 fi
 
-read -p "Using ${purple}${eddition}${reset} for the install process, would you like to change this (y/N)? " askvar
+echo "$red WARNING: Crurntly SBOS only supportes UEFI boot, via Systemd boot, if you need legacy boot, edit the config before continueing." #TODO FIX THAT
 
-case $askvar in 
-    y|Y|Yes|YES)
-        ask_eddition
-    ;;
-    *)
-        clear
-        echo "Proceeding with install..."
 
-    ;;
+echo "" >> ${root}/configuration.nix
+echo "" >> ${root}/configuration.nix
+echo "{" >> ${root}/configuration.nix
+echo "  imports = "  >> ${root}/configuration.nix
+echo "    [ " >> ${root}/configuration.nix
+echo "      ./hardware-configuration.nix" >> ${root}/configuration.nix
+echo "    ] " >> ${root}/configuration.nix
+echo "  boot = { " >> ${root}/configuration.nix
+echo "    kernelPackages = pkgs.linuxPackages_zen; " >> ${root}/configuration.nix
+echo "    loader = { " >> ${root}/configuration.nix
+echo "      systemd-boot.enable = true; " >> ${root}/configuration.nix
+echo "      efi.canTouchEfiVariables = true; " >> ${root}/configuration.nix
+echo "      grub.enable = false; " >> ${root}/configuration.nix
+echo "    }; " >> ${root}/configuration.nix
+echo "  }; " >> ${root}/configuration.nix
+echo "  time.timeZone = '${timezone}'  ">> ${root}/configuration.nix
+echo "  networking = { " >> ${root}/configuration.nix
+echo "    hostName = 'SpaceBusOS_${eddition}'; # SPACE BUS!!!!!!! " >> ${root}/configuration.nix
+echo "    useDHCP = false;" >> ${root}/configuration.nix
+echo "    interfaces.enp37s0.useDHCP = false; " >> ${root}/configuration.nix
+echo "    interfaces.tun0.useDHCP = false; " >> ${root}/configuration.nix
+echo "    interfaces.wlp0s20f3.useDHCP = false;" >> ${root}/configuration.nix
+echo "    networkmanager.enable = true;" >> ${root}/configuration.nix
+echo "    # Configure network proxy if necessary " >> ${root}/configuration.nix
+echo "    # proxy = {" >> ${root}/configuration.nix
+echo '    #   default = "http://user:password@proxy:port/"; ' >> ${root}/configuration.nix
+echo '    #   noProxy = "127.0.0.1,localhost,internal.domain"; ' >> ${root}/configuration.nix
+echo "    # }; " >> ${root}/configuration.nix
+echo "    firewall = { " >> ${root}/configuration.nix
+echo "      enable = false; " >> ${root}/configuration.nix
+echo "      #allowedTCPPorts = [ ... ]; " >> ${root}/configuration.nix #TODO add this
+echo "      #allowedUDPPorts = [ ... ]; " >> ${root}/configuration.nix #TODO add this 
+echo "    }; " >> ${root}/configuration.nix
+echo "" >> ${root}/configuration.nix
+echo "  }; " >> ${root}/configuration.nix
+echo "" >> ${root}/configuration.nix
+echo "" >> ${root}/configuration.nix
 
+if [[ $DE != "none" ]]; then 
+	echo "  services = { " >> ${root}/configuration.nix 
+	echo "    xserver = { " >> ${root}/configuration.nix
+	echo "    enable = true; " >> ${root}/configuration.nix
+	echo "    displayManager.sddm.enable = true; " >> ${root}/configuration.nix
+	case $DE in
+	        "Plasma"|"plasma")
+        	        echo "Error, Plasma Desltop or mobile not speccified. Please specify desktop or mobile"
+	                exit 1
+                	;;
+        	"Plasma Desktop"|"plasma desktop"|"Plasma desktop")
+			echo "    desktopManager.plasma5.enable = true; " >> ${root}/configuration.nix
+                	;;
+        	"Plasma Mobile"|"plasma mobile"|"Plasma mobile")
+	                echo "$red WARNING: Plasma Mobile is currently sunsupported. $reset"
+                	;;
+        	"sway"|"SwayWM"|"Sway WM"|"sway wm"|"Sway wm")
+	                echo "Proseeding with Sway WM install."
+                	;;
+        	"i3"|"i3wm"|"i3 wm"|"I3WM"|"I3 WM")
+ 	               	echo '    displayManager.defaultSession = "none+i3"'; >> ${root}/configuration.nix
+			echo "    windowManager.i3 = { " >> ${root}/configuration.nix
+			echo "      enable = true; " >> ${root}/configuration.nix
+			echo "      extraPackages = with pkgs; [ " >> ${root}/configuration.nix
+			echo "        dmenu #application launcher most people use " >> ${root}/configuration.nix
+			echo "        i3status # gives you the default i3 status bar " >> ${root}/configuration.nix
+			echo "        i3lock #default i3 screen locker " >> ${root}/configuration.nix
+			echo "        i3blocks #if you are planning on using i3blocks over i3status " >> ${root}/configuration.nix
+			echo "     ];" 
+        	        ;;
+		"xfce"|"XFCE")
+			echo "    desktopManager = {" >> ${root}/configuration.nix
+			echo "      xterm.enable = false;" >> ${root}/configuration.nix
+			echo "      xfce.enable = true;" >> ${root}/configuration.nix
+			echo "     };" >> ${root}/configuration.nix
+			echo '    displayManager.defaultSession = "xfce";' >> ${root}/configuration.nix
+			;;
+			
+	        *)
+                	echo "Assuming no DE for install."
+        	        ;;
+	esac 
+	
+	echo "    layout = 'us'; " >> ${root}/configuration.nix
+	echo "    libinput.enable = true; " >> ${root}/configuration.nix
+	if [[ $gpu == "nvidia" ]]; then 
+		echo '    videoDrivers = [ "modesetting" "nvidia" ]; #NOSYNC' >> ${root}/configuration.nix
+		echo "     screenSection = '' #NOSYNC" >> ${root}/configuration.nix
+		echo '      Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}" #NOSYNC ' >> ${root}/configuration.nix
+		echo '      Option         "AllowIndirectGLXProtocol" "off" #NOSYNC ' >> ${root}/configuration.nix
+		echo '      Option         "TripleBuffer" "on" #NOSYNC ' >> ${root}/configuration.nix
+		echo "  ''; " >> ${root}/configuration.nix
+	fi
+fi 
+echo "  openssh.enable = ture;" >> ${root}/configuration.nix
+echo "  printing.enable = ture;" >> ${root}/configuration.nix
+echo "  pipewire = {" >> ${root}/configuration.nix
+echo "    enable = true" >> ${root}/configuration.nix
+echo "    alsa = { " >> ${root}/configuration.nix
+echo "      enable = ture;" >> ${root}/configuration.nix
+echo "      support32bit = ture;" >> ${root}/configuration.nix
+echo "    }; " >> ${root}/configuration.nix
+echo "    pulse.enable = true;" >> ${root}/configuration.nix
+echo "    jack.enable = true;" >> ${root}/configuration.nix
+echo "  };" >> ${root}/configuration.nix
+if [[ $gpu = "nvidia" ]]; then 
+	echo "xmr-stack.cudaSupport = true; #NOSYNC" >> ${root}/configuration.nix
+fi
+
+if [[ $eddition != "desktop" ]]; then 
+	echo "tlp = {" >> ${root}/configuration.nix
+	echo "  enable = true;" >> ${root}/configuration.nix
+	echo "  settings = { " >> ${root}/configuration.nix
+	echo '     "SATA_LINKPWR_ON_BAT" =  "med_power_with_dipm"; ' >> ${root}/configuration.nix
+	echo '     "USB_BLACKLIST_PHONE" = 1; ' >> ${root}/configuration.nix
+	echo "  }; ">> ${root}/configuration.nix
+	echo "};" >> ${root}/configuration.nix
+fi
+echo "};" >> ${root}/configuration.nix
+echo "  sound.enable = true;" >> ${root}/configuration.nix
+echo "  user.users.${username} = {" >> ${root}/configuration.nix
+echo "    isNormalUser = true; " >> ${root}/configuration.nix
+echo "    shell = pkgs.${shell}; " >> ${root}/configuration.nix
+echo '    extraGroups = [ "networkmanager" "wheel" "kvm" "podman" "video"]; ' >> ${root}/configuration.nix 
+echo "  }; " >> ${root}/configuration.nix
+echo "  nix = { " >> ${root}/configuration.nix
+echo "    package = pkgs.nixUnstable; " >> ${root}/configuration.nix
+echo "    extra options = '' " >> ${root}/configuration.nix
+echo "      experimental-features = ni-command flakes" >> ${root}/configuration.nix
+echo "    ''; " >> ${root}/configuration.nix
+echo "  }; " >> ${root}/configuration.nix
+
+case $DE in
+	"sway"|"SwayWM"|"Sway WM"|"sway wm"|"Sway wm")
+		echo "  programs.sway = { " >> ${root}/configuration.nix
+		echo "    enable = true; " >> ${root}/configuration.nix
+		echo "    wrapperFeatures.gtk = true; " >> ${root}/configuration.nix
+		echo "    extraPackages = with pkgs; [ " >> ${root}/configuration.nix
+		echo "      swaylock " >> ${root}/configuration.nix
+		echo "      swayidle " >> ${root}/configuration.nix
+		echo "      wl-clipboard " >> ${root}/configuration.nix
+		echo "      mako " >> ${root}/configuration.nix
+		echo "      swaybg " >> ${root}/configuration.nix
+		echo "      alacritty " >> ${root}/configuration.nix
+		echo "      dmenue " >> ${root}/configuration.nix 
+		echo "    ]; " >> ${root}/configuration.nix
+		echo "  }; " >> ${root}/configuration.nix
+                ;;
 esac
 
-read -p "Would you like to use SpaceBus automatic partitioning (Y/n)? " askvar
-case $askvar in   
-    N|n|no|No|NO)
-        echo "Manual partitioning selected."
-        echo "Warning, auto-generated mount options may not work properly with manual partitioning"
-        echo "${red}------------------------------------------------------------------------------------${reset}"
-        echo "Pleas do the following: "
-        echo "  ${green}1.${reset} Format your disk(s) as you wish to."
-        echo "  ${green}2.${reset} Mount your root partition in /mnt/."
-        echo "  ${green}3.${reset} Make a /mnt/boot partition."
-        echo "  ${green}4.${reset} Mount your boot partition in /mnt/boot."
-        echo "For more information see the NixOS guid on installing for more details:"
-        echo "${altBlack}https://nixos.org/manual/nixos/unstable/index.html#sec-installation${reset}"
-        while :; do 
-            read -p "Press enter to continue. "
-            if cat /proc/mounts | grep "/mnt" && cat /proc/mounts | grep "/mnt/boot"; then
-                clear
-                echo "Proceeding with the install."
-                break
-            else 
-                echo "The partitions have not been mounted, please mount them."
-            fi
-        done
-            
-        ;;
-    *)
-        echo "Automatic partitioniing sleected. Proeceed with caution."
-        echo "${red}------------------------------------------------------------------------------------${reset}"
-
-    ;;
-
+echo "  nixpkgs = { " >> ${root}/configuration.nix 
+echo "    config = { " >> ${root}/configuration.nix
+case $GPU in 
+	"nvidia" )
+		echo "      allowUnfree = true;" >> ${root}/configuration.nix
+		;;
 esac
+echo "    packageOverride = pkgs: { " >> ${root}/configuration.nix
+echo "      nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") { inherit pkgs; }; " >> ${root}/configuration.nix
+echo "    }; " >> ${root}/configuration.nix
+echo "  }; " >> ${root}/configuration.nix
+echo "  environment.systemPackages = with pkgs; [ " >> ${root}/configuration.nix
+echo "    neovim " >> ${root}/configuration.nix
+echo "    ${shell} " >> ${root}/configuration.nix
+case $GPU in 
+	"nvidia" )
+		echo "nvidia-offload" >> ${root}/configuration.nix
+		;;
+esac
+echo "    brightnessctl " >> ${root}/configuration.nix
+echo "  ]; " >> ${root}/configuration.nix
+ 
+bat configuration.nix
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

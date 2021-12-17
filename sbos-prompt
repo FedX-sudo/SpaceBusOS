@@ -42,10 +42,12 @@ ${altBlack}|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||${reset}
 "
-curlie -fsSL "https://wttr.in/?0"
+curlie -fsSL "https://wttr.in/?0m" --max-time 1
 echo "${altOrange}Public IP: ${reset}"
-curlie -fsSL "https://ifconfig.me"
+curlie -fsSL "https://ifconfig.me" --max-time 1
 echo ""
 echo  "${altOrange}CPU:${reset}"
 lscpu |rg "Model name:" | cut -c 34-10000
+echo  "${altOrange}Disk Info:${reset}"
+duf -style ascii -only local
 echo  "${altOrange}Fish Says Hi:${reset}"
