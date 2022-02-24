@@ -1,11 +1,14 @@
-#!/bin/bash
+#!/bin/sh
 eddition=""
 DE="none"
 gpu="none"
 root="."
 timezone="America/Denver"
-username="astronoght" 
+username="astronaut" 
 shell="fish"
+output_format="plain"
+kernel="zen"
+rootFS="btrfs"
 
 reset=`tput sgr0`
 black=`tput setaf 0`
@@ -31,12 +34,12 @@ echo "$red This is the Alpha of the SpaceBusOS installer. Proeceed with caution.
 usage()
 {
 cat << EOF
-usage: bash ./scripts/packndeploy -n service_name
--n    | --service_name      (Required)            Service to deploy
--b    | --branch            (master)              Source branch
--h    | --help                                    Brings up this menu
+-h    | --help          Brings up this menu
+-o    | --output        Defines the output format (plain, ISO, etc. See nixos-generators for more detail.
+-l    | --list-DEs      list available desktops to install. 
 EOF
 }
+
 listDEs()
 { 
 cat << EOF
@@ -56,6 +59,8 @@ while [ "$1" != "" ]; do
         -h | --help )    usage
             exit
         ;;
+        -o | --output )
+            outouput_format = $2
         * )              usage
             exit 1
     esac
@@ -71,35 +76,40 @@ echo "phone"
 echo "none"
 read -p "Please select an eddition to use (${eddition}). " eddition
           
-#read -p "Would you like to use SpaceBus automatic partitioning (Y/n)? " askvar
-#case $askvar in   
-#    N|n|no|No|NO)
-#        echo "Manual partitioning selected."
-#        echo "Warning, auto-generated mount options may not work properly with manual partitioning"
-#        echo "------------------------------------------------------------------------------------"
-#        echo "Pleas do the following: "
-#        echo "  1. Format your disk(s) as you wish to." 
-#        echo "  2. Mount your root partition in /mnt/."
-#        echo "  3. Make a /mnt/boot partition."
-#        echo "  4. Mount your boot partition in /mnt/boot."
-#        echo "For more information see the NixOS guid on installing for more details:"
-#        echo "https://nixos.org/manual/nixos/stable/index.html#sec-installation"
-#        while :; do 
-#            read -p "Press enter to continue. "
-#            if cat /proc/mounts | grep "/mnt" && cat /proc/mounts | grep "/mnt/boot"; then
-#                echo "Proceeding with the install."
-#                break
-#            else 
-#                echo "The partitions have not been mounted, please mount them."
-#            fi
-#        done
-#            
-#        ;;
-#    *)
-#        echo "$red sorry, automatic partitioning is currently unavailable. $reset"
-#    ;;
-#
-#esac
+read -p "Would you like to use SpaceBus automatic partitioning (Y/n)? " askvar
+case $askvar in   
+    N|n|no|No|NO)
+        echo "Manual partitioning selected."
+        echo "Warning, auto-generated mount options may not work properly with manual partitioning"
+       echo "------------------------------------------------------------------------------------"
+        echo "Pleas do the following: "
+        echo "  1. Format your disk(s) as you wish to." 
+        echo "  2. Mount your root partition in /mnt/."
+        echo "  3. Make a /mnt/boot partition."
+        echo "  4. Mount your boot partition in /mnt/boot."
+        echo "For more information see the NixOS guid on installing for more details:"
+        echo "https://nixos.org/manual/nixos/stable/index.html#sec-installation"
+        while :; do 
+            read -p "Press enter to continue. "
+            if cat /proc/mounts | grep "/mnt" && cat /proc/mounts | grep "/mnt/boot"; then
+                echo "Proceeding with the install."
+                break
+            else 
+                echo "The partitions have not been mounted, please mount them."
+            fi
+        done
+            
+        ;;
+    *)
+        sudo mkdir -p /mnt/boot
+        lsblk
+        read -p "Please select which disk you would like to format. (I.E. /dev/sda)" disk
+         
+
+
+    ;;
+
+esac
 
 case $eddition in
 	"laptop"|"Laptop"|laptop)
@@ -272,7 +282,7 @@ if [[ $DE != "none" ]]; then
 	
 	echo "    layout = 'us'; " >> ${root}/configuration.nix
 	echo "    libinput.enable = true; " >> ${root}/configuration.nix
-	if [[ $gpu == "nvidia" ]]; then 
+	if [ $gpu == "nvidia" ]; then 
 		echo '    videoDrivers = [ "modesetting" "nvidia" ]; #NOSYNC' >> ${root}/configuration.nix
 		echo "     screenSection = '' #NOSYNC" >> ${root}/configuration.nix
 		echo '      Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}" #NOSYNC ' >> ${root}/configuration.nix
@@ -292,11 +302,11 @@ echo "    }; " >> ${root}/configuration.nix
 echo "    pulse.enable = true;" >> ${root}/configuration.nix
 echo "    jack.enable = true;" >> ${root}/configuration.nix
 echo "  };" >> ${root}/configuration.nix
-if [[ $gpu = "nvidia" ]]; then 
+if [ $gpu == "nvidia" ]; then 
 	echo "xmr-stack.cudaSupport = true; #NOSYNC" >> ${root}/configuration.nix
 fi
 
-if [[ $eddition != "desktop" ]]; then 
+if [ $eddition != "desktop" ]; then 
 	echo "tlp = {" >> ${root}/configuration.nix
 	echo "  enable = true;" >> ${root}/configuration.nix
 	echo "  settings = { " >> ${root}/configuration.nix
@@ -345,7 +355,7 @@ case $GPU in
 		;;
 esac
 echo "    packageOverride = pkgs: { " >> ${root}/configuration.nix
-echo "      nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") { inherit pkgs; }; " >> ${root}/configuration.nix
+echo '      nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") { inherit pkgs; }; ' >> ${root}/configuration.nix
 echo "    }; " >> ${root}/configuration.nix
 echo "  }; " >> ${root}/configuration.nix
 echo "  environment.systemPackages = with pkgs; [ " >> ${root}/configuration.nix
@@ -358,8 +368,149 @@ case $GPU in
 esac
 echo "    brightnessctl " >> ${root}/configuration.nix
 echo "  ]; " >> ${root}/configuration.nix
- 
-bat configuration.nix
+echo "  hardware = { " >> ${root}/configuration.nix
+if [ $gpu == "nvidia-prime" ]; then #TODO Add support for Nvidia Prime. 
+	{
+        echo '    nvidia.prime = { #NOSYNC >> ${root}/configuration.nix
+      	          offload.enable = true; #NOSYNC>> ${root}/configuration.nix
+                  intelBusId = "PCI:00:02:0"; #NOSYNC>> ${root}/configuration.nix
+                  nvidiaBusId = "PCI:23:00:0"; #NOSYNC>> ${root}/configuration.nix
+	  }; #NOSYNC >> ${root}/configuration.nix'
+	} >> ${root}/configuration.nix 
+fi
+
+{
+echo '
+    opengl = {
+      extraPackages = with pkgs; [
+              intel-media-driver
+              vaapiIntel
+              vaapiVdpau
+              libvdpau-va-gl
+             ];
+           }; 
+    virtualisation = {
+      docker.enable = false;
+      podman = {
+        enable = true;
+        dockerSocket.enable = true;
+        defaultNetwork.dnsname.enable = true;
+      };
+    };'
+} >> ${root}/configuration.nix
+
+{
+echo ' 
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||/////||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||/////||
+# ||//||||||||/////|||||||||||||||||||||||||||||||||||||||||||||///////|||||||||||||||||||||||||//////||||//////||||||||//||
+# ||//||||||//|||||||||//////|||||/////|||||||////||||||////||||//||||//|||/||||//||||/////||||//||||//||//|||||||||||||//||
+# ||//|||||||/////|||||//||||/|||||||||//|||//||||||||//||||/|||///////||||/||||//|||//||||||||/|||||//|||//////||||||||//||
+# ||//||||||||||||//|||//||||//|||///////||//||||||||////////|||//||||//|||/||||//||||/////||||/|||||//||||||||//|||||||//||
+# ||//||||||||||||//|||//||||/|||//||||//|||//||||||||/|||||||||//||||//|||/||||//||||||||//|||//||||/|||||||||//|||||||//||
+# ||//|||||||//////||||//////|||||////||/|||||////||||||/////|||//////||||||///||/|||//////||||||////|||||//////||||||||//||
+# ||/////||||||||||||||//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||/////||
+# |||||||||||||||||||||//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+{pkgs, config, lib, ...}:
+{
+  home.packages = with pkgs; [
+    fd
+    wofi
+    ffmpeg
+    delta
+    ag
+    mcfly
+    cheat
+    clipman
+    procs
+    httpie
+    curlie
+    zoxide
+    dogdns
+    gitoxide
+    pciutils
+    exa
+    wget
+    bat
+    neofetch
+    duff
+    bottom
+    niv
+    #shells
+    elvish
+    ion
+    tcsh
+    xonsh
+    ripgrep
+    ripgrep-all
+    imagemagick6Big
+    zip
+    grimshot
+'
+} > home.nix
+
+if [ "$DE" == "sway" ]; then 
+	echo '  xdg.configFile."sway/config".text = ' >> home.nix
+	echo "    '' " >> home.nix
+	{
+	echo '
+	  exec wl-paste -t text --watch clipman store
+          exec waybar
+          # SpaceBusOS default config for sway 
+	  # DO NOT EDIT THIS FILE. Edit .config/nixpkgs/home.nix instead
+	  #
+	  # Read `man 5 sway` for a complete reference.
+          ### Variables
+          #
+          # Logo key. Use Mod1 for Alt.
+          set $mod Mod4
+          # Home row direction keys, like vim
+	  set $left h
+	  set $down j
+	  set $up k
+set $right l
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# set $menu wofi --show run
+set $title dropdown
+set $term alacritty -t $title
+exec $term
+for_window [title="$title"] move container to scratchpad
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
+#output * bg @datadir@/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Idle configuration
+#
+# Example configuration:
+#
+ exec swayidle -w \
+          timeout 300 'swaylock -f -c 000000' \
+          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+# Example configuration:
+#
+	  '
+  	} >> home.nix
+fi
 
 
 
@@ -370,6 +521,21 @@ bat configuration.nix
 
 
 
+
+
+case $output_format in
+    "plain")
+        exit 0
+        ;;
+    "amazon")
+        echo "Creating Amazon EC2 image. $red WARRNING! Home manager configs are not currently supported in EC2"
+        nix run github:nix-community/nixos-generators -- -f amazon -c $root/configuration.nix
+        ;;
+    *)
+        echo "Error, unrecognized option"
+        exit 1
+        ;;
+esac
 
 
 
